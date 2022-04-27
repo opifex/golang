@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  application:
+    build: .
+    hostname: application
+    container_name: $APP_NAME-application
+    restart: always
+    ports:
+      - "8099:80"
+    volumes:
+      - ./:/app
+    env_file:
+      - .env
+    networks:
+      network:
+
+networks:
+  network:
+    name: $APP_NAME-network
